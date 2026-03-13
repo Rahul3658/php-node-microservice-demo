@@ -12,13 +12,13 @@ services:
     volumes:
       - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
-      - "3306:3306"
+      - "3323:3306"
 
   node-api:
     build: ./node-backend
     container_name: node-api
     ports:
-      - "3000:3000"
+      - "3059:3000"
     depends_on:
       - mysql
 
@@ -26,6 +26,6 @@ services:
     build: ./php-frontend
     container_name: php-web
     ports:
-      - "8080:80"
+      - "8085:80"
     depends_on:
       - node-api
